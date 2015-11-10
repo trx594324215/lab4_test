@@ -4,6 +4,8 @@
 #include <stdio.h>
 #define N 100000
 using namespace std;
+//quick sort
+
 
 struct LIST
 {
