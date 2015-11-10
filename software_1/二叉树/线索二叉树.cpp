@@ -1,7 +1,10 @@
 #include <iostream>
 #define max 100
 using namespace std;
-//线索二叉树 
+
+
+//线索二叉树
+
 typedef struct node
 {
 	struct node *leftChild;
