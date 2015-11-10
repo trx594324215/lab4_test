@@ -4,25 +4,27 @@
 #include <string.h>
 #define cn 10
 using namespace std;
+//kå‰å“ˆå¤«æ›¼
+
 
 typedef  struct
-{ /* ½áµãĞÍ*/
+{ /* ç»“ç‚¹å‹*/
 	char letter;
-	int  weight; /* È¨Öµ */
-	int    child[cn];  /* º¢×ÓÁ´*/
-	int    parent; /* Ë«Ç×Á´ */
+	int  weight; /* æƒå€¼ */
+	int    child[cn];  /* å­©å­é“¾*/
+	int    parent; /* åŒäº²é“¾ */
 	int    flag;
 }HuffmanT;
 
 typedef struct
 {
-	char  ch;   //´æ´¢±»±àÂëµÄ×Ö·û
-	char  bits[N + 1];//×Ö·û±àÂëÎ»´®
+	char  ch;   //å­˜å‚¨è¢«ç¼–ç çš„å­—ç¬¦
+	char  bits[N + 1];//å­—ç¬¦ç¼–ç ä½ä¸²
 	int   coun;
 	int   node;
 }CodeNode;
 
-void InitHT(HuffmanT T[])//³õÊ¼»¯¹ş·òÂüÊ÷//
+void InitHT(HuffmanT T[])//åˆå§‹åŒ–å“ˆå¤«æ›¼æ ‘//
 {
 	int i, j;
 	for (i = 0; i<10 * N - 1; i++)
@@ -36,7 +38,7 @@ void InitHT(HuffmanT T[])//³õÊ¼»¯¹ş·òÂüÊ÷//
 	}
 }
 
-void SelectMin(HuffmanT T[], int n, int c[], int K)//ÕÒ³öÈ¨Öµ×îĞ¡µÄÊı
+void SelectMin(HuffmanT T[], int n, int c[], int K)//æ‰¾å‡ºæƒå€¼æœ€å°çš„æ•°
 {
 	int i = 0, tem, q;
 	for (int j = 0; j<K; j++)
@@ -63,11 +65,11 @@ void SelectMin(HuffmanT T[], int n, int c[], int K)//ÕÒ³öÈ¨Öµ×îĞ¡µÄÊı
 	}
 }
 
-void  CreartHT(HuffmanT T[], int coun, int K)//¹¹Ôìk²æhuffamÊ÷
+void  CreartHT(HuffmanT T[], int coun, int K)//æ„é€ kå‰huffamæ ‘
 {
 	int i;
 	int c[N];
-	for (i = 0; i < N; i++)//³õÊ¼»¯×îĞ¡Öµ¼ÇÂ¼Êı×é
+	for (i = 0; i < N; i++)//åˆå§‹åŒ–æœ€å°å€¼è®°å½•æ•°ç»„
 	{
 		c[i] = -1;
 	}
@@ -89,21 +91,21 @@ void  CreartHT(HuffmanT T[], int coun, int K)//¹¹Ôìk²æhuffamÊ÷
 	}
 }
 
-void CharSetHuffmanEncoding(HuffmanT T[], CodeNode H[], int coun, int K)//k²æ¹ş·òÂüÊ÷µÄ±àÂë
-{  /*¸ù¾İHuffmanÊ÷T ÇóHuffman±àÂë±í H*/
-	int c, p, i;           /* c ºÍp ·Ö±ğÖ¸Ê¾T ÖĞº¢×ÓºÍË«Ç×µÄÎ»ÖÃ*/
-	char cd[N+1];    /* ÁÙÊ±´æ·Å±àÂë*/
-	int start,s;            /* Ö¸Ê¾±àÂëÔÚcd ÖĞµÄÎ»ÖÃ */
-	cd[coun] = '\0';/* ±àÂë½áÊø·û */
+void CharSetHuffmanEncoding(HuffmanT T[], CodeNode H[], int coun, int K)//kå‰å“ˆå¤«æ›¼æ ‘çš„ç¼–ç 
+{  /*æ ¹æ®Huffmanæ ‘T æ±‚Huffmanç¼–ç è¡¨ H*/
+	int c, p, i;           /* c å’Œp åˆ†åˆ«æŒ‡ç¤ºT ä¸­å­©å­å’ŒåŒäº²çš„ä½ç½®*/
+	char cd[N+1];    /* ä¸´æ—¶å­˜æ”¾ç¼–ç */
+	int start,s;            /* æŒ‡ç¤ºç¼–ç åœ¨cd ä¸­çš„ä½ç½® */
+	cd[coun] = '\0';/* ç¼–ç ç»“æŸç¬¦ */
 	//CodeNode h = H;
 	for (i = 0; i <coun; i++)
-	{ /* ÒÀ´ÎÇóÒ¶×ÓT[i]µÄ±àÂë */
-		H[i].ch = T[i].letter;  /* ¶ÁÈëÒ¶×ÓT[i]¶ÔÓ¦µÄ×Ö·û*/
-		start = coun;                   /* ±àÂëÆğÊ¼Î»ÖÃµÄ³õÖµ*/
-		c = i;                         /* ´ÓÒ¶×ÓT[i]¿ªÊ¼ÉÏËİ */
+	{ /* ä¾æ¬¡æ±‚å¶å­T[i]çš„ç¼–ç  */
+		H[i].ch = T[i].letter;  /* è¯»å…¥å¶å­T[i]å¯¹åº”çš„å­—ç¬¦*/
+		start = coun;                   /* ç¼–ç èµ·å§‹ä½ç½®çš„åˆå€¼*/
+		c = i;                         /* ä»å¶å­T[i]å¼€å§‹ä¸Šæº¯ */
 		while ((p = T[c].parent) >= 0)
-		{ /* Ö±µ½ÉÏËİµ½T[c]ÊÇÊ÷¸ùÎ»ÖÃ */
-			//cd[--start]=(T[p].lchild==c)? '0':'1'; /* ÈôT[c]ÊÇT[p]µÄ×óº¢×Ó£¬ÔòÉú³É´úÂë0£¬·ñÔòÉú³É´úÂë1*/
+		{ /* ç›´åˆ°ä¸Šæº¯åˆ°T[c]æ˜¯æ ‘æ ¹ä½ç½® */
+			//cd[--start]=(T[p].lchild==c)? '0':'1'; /* è‹¥T[c]æ˜¯T[p]çš„å·¦å­©å­ï¼Œåˆ™ç”Ÿæˆä»£ç 0ï¼Œå¦åˆ™ç”Ÿæˆä»£ç 1*/
 			for (int k = 0; i<K ; k++)
 			{
 				if (T[p].child[k] == c)
@@ -112,7 +114,7 @@ void CharSetHuffmanEncoding(HuffmanT T[], CodeNode H[], int coun, int K)//k²æ¹ş·
 					break;
 				}
 			}
-			c = p;      /* ¼ÌĞøÉÏËİ*/
+			c = p;      /* ç»§ç»­ä¸Šæº¯*/
 		}
 		for (int a = 0; a < N + 1; a++)
 		{
@@ -135,7 +137,7 @@ void CharSetHuffmanEncoding(HuffmanT T[], CodeNode H[], int coun, int K)//k²æ¹ş·
 		H[i].bits[b + 1] = '\0';*/
 		//strcpy(H[i].bits,&cd[start]);
 	}
-}  /*¸´ÖÆ±àÂëÎª´®ÓÚ±àÂë±íH*/
+}  /*å¤åˆ¶ç¼–ç ä¸ºä¸²äºç¼–ç è¡¨H*/
 
 int main()
 {
@@ -166,8 +168,8 @@ int main()
 		T[j].weight++;
 		c = fgetc(fp);
 	}
-	fclose(fp);//¸øÓè¸÷ÊıÖµÈ¨Öµ
-	for (i = 0; i<N; i++)//ÏûÈ¥Ã»ÓĞ³öÏÖµÄ×Ö·û
+	fclose(fp);//ç»™äºˆå„æ•°å€¼æƒå€¼
+	for (i = 0; i<N; i++)//æ¶ˆå»æ²¡æœ‰å‡ºç°çš„å­—ç¬¦
 	{
 		if (T[i].weight != 0)
 		{
@@ -175,7 +177,7 @@ int main()
 			Ti[coun].weight = T[i].weight;
 			coun++;
 		}
-	}//ÏûÈ¥Ã»ÓĞ³öÏÖµÄ×Ö·û
+	}//æ¶ˆå»æ²¡æœ‰å‡ºç°çš„å­—ç¬¦
 	CreartHT(Ti, coun, K);
 	CharSetHuffmanEncoding(Ti, H, coun, K);
 	for (i = 0; i<coun; i++)
@@ -184,12 +186,12 @@ int main()
 		printf("%c:", H[i].ch);
 		cout << H[i].bits;
 		printf("\n");
-	}//Êä³ö
+	}//è¾“å‡º
 	return 0;
 }
-//ÎÊÌâ1£º×Ü½Úµã¸öÊı£»ÎÊÌâ2£ºSelectº¯ÊıµÄ½øÒ»²½¼ìÑé£»ÎÊÌâ3£º½¨Á¢Ê÷µÄ¹ı³Ì£¬°üÀ¨¿ÉÄÜ²¹µÃ0È¨ÖØµã£»ÎÊÌâ4£ºÊä³ö±àÂëÇé¿ö
+//é—®é¢˜1ï¼šæ€»èŠ‚ç‚¹ä¸ªæ•°ï¼›é—®é¢˜2ï¼šSelectå‡½æ•°çš„è¿›ä¸€æ­¥æ£€éªŒï¼›é—®é¢˜3ï¼šå»ºç«‹æ ‘çš„è¿‡ç¨‹ï¼ŒåŒ…æ‹¬å¯èƒ½è¡¥å¾—0æƒé‡ç‚¹ï¼›é—®é¢˜4ï¼šè¾“å‡ºç¼–ç æƒ…å†µ
 
-/*void SelectMin(HuffmanT T[],int n,int*p1,int*p2)//ÕÒ³öÈ¨Öµ×îĞ¡µÄÊı
+/*void SelectMin(HuffmanT T[],int n,int*p1,int*p2)//æ‰¾å‡ºæƒå€¼æœ€å°çš„æ•°
 {
 int i=0,tem;
 while(T[i].flag!=0)
