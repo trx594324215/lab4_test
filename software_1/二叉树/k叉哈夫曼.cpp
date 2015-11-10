@@ -4,7 +4,7 @@
 #include <string.h>
 #define cn 10
 using namespace std;
-//k叉哈夫曼
+//k叉哈夫曼树
 
 
 typedef  struct

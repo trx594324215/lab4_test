@@ -1,7 +1,7 @@
 #include <iostream>
 #define max 100
 using namespace std;
-
+//ÏßË÷¶þ²æÊ÷ 
 typedef struct node
 {
 	struct node *leftChild;

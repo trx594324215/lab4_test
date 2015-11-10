@@ -1,6 +1,6 @@
 #include <iostream>
 #define MaxSize 100
-
+//Ê÷µ½¶þ²æÊ÷
 using namespace std;
 
 struct  CTNode
