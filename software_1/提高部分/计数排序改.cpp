@@ -4,7 +4,7 @@
 #include <stdio.h>
 #define max 10
 using namespace std;
-#count sort
+//count sort
 
 struct Struct
 {
